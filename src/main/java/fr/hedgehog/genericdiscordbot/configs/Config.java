@@ -1,25 +1,16 @@
 package fr.hedgehog.genericdiscordbot.configs;
 
-import fr.hedgehog.genericdiscordbot.dispatchers.implementations.Dispatcher;
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import fr.hedgehog.genericdiscordbot.commands.helpers.Helper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.context.annotation.ApplicationScope;
+
+import java.lang.reflect.InvocationTargetException;
 
 @Configuration
-@EnableAutoConfiguration
-@RequiredArgsConstructor
 public class Config {
 
-//    @Bean
-//    @ApplicationScope
-//    public CommandConfig getCommands(){
-//        return new CommandConfig();
-//    }
-//
-//    @Bean
-//    public Dispatcher getDispatcher(){
-//        return new Dispatcher(this.getCommands());
-//    }
+    @Bean
+    public CommandCache getCommands() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        return new CommandCache();
+    }
 }
