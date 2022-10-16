@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import reactor.core.publisher.Hooks;
 import reactor.core.publisher.Mono;
 
 import java.util.function.Predicate;
@@ -25,6 +26,7 @@ public class MessageListener{
     private String caller;
 
     public Mono<Void> processCommand(Message eventMessage) {
+        Hooks.onOperatorDebug();
         return Mono.just(eventMessage)
                 .filter(isABot)
                 .filter(isACall)

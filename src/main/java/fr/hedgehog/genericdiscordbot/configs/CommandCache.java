@@ -3,9 +3,6 @@ package fr.hedgehog.genericdiscordbot.configs;
 import fr.hedgehog.genericdiscordbot.commands.helpers.Helper;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.asm.Type;
-import org.springframework.cglib.core.MethodInfo;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

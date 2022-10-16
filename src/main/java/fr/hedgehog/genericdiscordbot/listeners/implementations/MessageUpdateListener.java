@@ -1,8 +1,6 @@
 package fr.hedgehog.genericdiscordbot.listeners.implementations;
 
 import discord4j.core.event.domain.message.MessageUpdateEvent;
-import fr.hedgehog.genericdiscordbot.configs.CommandCache;
-import fr.hedgehog.genericdiscordbot.dispatchers.Dispatcher;
 import fr.hedgehog.genericdiscordbot.listeners.EventListener;
 import fr.hedgehog.genericdiscordbot.listeners.MessageListener;
 import org.springframework.stereotype.Service;
