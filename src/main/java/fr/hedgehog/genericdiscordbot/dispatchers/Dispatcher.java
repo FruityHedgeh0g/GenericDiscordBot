@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @Service
@@ -15,13 +14,13 @@ import java.lang.reflect.Method;
 @Getter
 public class Dispatcher {
 
-    private final CommandCache commands;
+    private final CommandCache commandCache;
 
     public Mono<Void> dispatch(Message message) {
 
         return Mono.just(message)
                 .map(anyMessage -> anyMessage.getContent().trim().split(" "))
-                .map(command -> commands.getCommands().get(command[1]))
+                .map(command -> commandCache.getCommands().get(command[1]))
                 .mapNotNull(clazz -> {
                     try {
                         return execute(clazz, message);
