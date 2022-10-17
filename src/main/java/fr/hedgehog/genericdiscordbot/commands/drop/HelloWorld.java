@@ -1,8 +1,12 @@
 package fr.hedgehog.genericdiscordbot.commands.drop;
 
 import discord4j.core.object.entity.Message;
+import discord4j.core.object.entity.channel.Channel;
+import discord4j.core.object.entity.channel.MessageChannel;
 import fr.hedgehog.genericdiscordbot.commands.GenericCommand;
 import reactor.core.publisher.Mono;
+
+import java.util.Objects;
 
 public class HelloWorld implements GenericCommand {
 
@@ -17,5 +21,10 @@ public class HelloWorld implements GenericCommand {
                 .flatMap(Message::getChannel)
                 .flatMap(channel -> channel.createMessage("Hi!"))
                 .then();
+    }
+
+    private MessageChannel printToChannel(MessageChannel channel){
+        System.out.println(channel.toString());
+        return channel;
     }
 }
