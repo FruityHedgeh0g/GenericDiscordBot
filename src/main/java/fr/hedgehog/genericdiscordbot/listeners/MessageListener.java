@@ -33,7 +33,7 @@ public class MessageListener{
                 .then();
     }
 
-    Predicate<Message> isABot = message -> message.getAuthor().map(user -> !user.isBot()).orElse(false);
+    Predicate<Message> isABot = message -> message.getAuthor().map(user -> !user.isBot()).orElse(false); // || message.getAuthor().map(user -> user.getId().asString()).equals("243138030980825089")
     Predicate<Message> isACall = message -> message.getContent().trim().startsWith(prefix + caller);
     Predicate<Message> hasACommand = message -> !message.getContent().trim().split(prefix + caller + " ")[1].trim().isEmpty();
     Predicate<Message> isInCommands = message -> dispatcher.getCommandCache().getCommands().containsKey(message.getContent().trim()

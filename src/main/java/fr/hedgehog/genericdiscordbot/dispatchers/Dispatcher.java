@@ -1,6 +1,7 @@
 package fr.hedgehog.genericdiscordbot.dispatchers;
 
 import discord4j.core.object.entity.Message;
+import fr.hedgehog.genericdiscordbot.commands.GenericCommand;
 import fr.hedgehog.genericdiscordbot.configs.CommandCache;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,12 +13,13 @@ import java.lang.reflect.Method;
 @Service
 @RequiredArgsConstructor
 @Getter
-public class Dispatcher {
+public class Dispatcher implements GenericDispatcher {
+
+
 
     private final CommandCache commandCache;
 
     public Mono<Void> dispatch(Message message) {
-
         return Mono.just(message)
                 .map(anyMessage -> anyMessage.getContent().trim().split(" "))
                 .map(command -> commandCache.getCommands().get(command[1]))
