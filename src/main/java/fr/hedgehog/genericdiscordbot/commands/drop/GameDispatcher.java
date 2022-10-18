@@ -2,23 +2,25 @@ package fr.hedgehog.genericdiscordbot.commands.drop;
 
 import discord4j.core.object.entity.Message;
 import fr.hedgehog.genericdiscordbot.commands.GenericCommand;
-import fr.hedgehog.genericdiscordbot.commands.gameModule.configs.GameCache;
+import fr.hedgehog.genericdiscordbot.configs.GameCache;
 import fr.hedgehog.genericdiscordbot.dispatchers.GenericDispatcher;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Qualifier;
 import reactor.core.publisher.Mono;
 
+import javax.annotation.PostConstruct;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 public class GameDispatcher implements GenericCommand, GenericDispatcher {
 
-    private final GameCache games;
-    //conflict de nom de méthodes entre execute GenericCommand et GenericDispatcher
+    private GameCache games;
+
     @Override
     public String getCommandCaller() {
         return "game";
@@ -27,7 +29,7 @@ public class GameDispatcher implements GenericCommand, GenericDispatcher {
     @Override
     public Mono<Void> execute(Message message) {
         return Mono.just(message)
-                .map(anyMessage -> dispatch(anyMessage))
+                .map(this::dispatch).doOnSuccess(System.out::println).doOnError(System.out::println)
                 .then();
 
     }
@@ -59,6 +61,11 @@ public class GameDispatcher implements GenericCommand, GenericDispatcher {
         }
 
         return null;
+    }
+
+    @PostConstruct
+    private void setGameDispatcher() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        this.setGames(new GameCache());
     }
 
 

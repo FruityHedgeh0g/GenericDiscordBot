@@ -1,4 +1,4 @@
-package fr.hedgehog.genericdiscordbot.commands.gameModule;
+package fr.hedgehog.genericdiscordbot.commands.gamemodule;
 
 import discord4j.core.object.entity.Message;
 import org.springframework.stereotype.Component;

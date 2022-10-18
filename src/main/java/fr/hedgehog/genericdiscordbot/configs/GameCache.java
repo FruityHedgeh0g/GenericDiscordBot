@@ -1,7 +1,8 @@
-package fr.hedgehog.genericdiscordbot.commands.gameModule.configs;
+package fr.hedgehog.genericdiscordbot.configs;
 
 import fr.hedgehog.genericdiscordbot.commands.helpers.Helper;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,7 +17,7 @@ public class GameCache {
 
         this.setGames(new HashMap<>());
 
-        Class[] classes = Helper.getClasses("fr.hedgehog.genericdiscordbot.commands.gameModule.games");
+        Class[] classes = Helper.getClasses("fr.hedgehog.genericdiscordbot.commands.gamemodule.games");
         for (Class clazz : classes) {
             Object o = Class.forName(clazz.getName()).getDeclaredConstructor().newInstance();
             for(Method m : o.getClass().getMethods()) {

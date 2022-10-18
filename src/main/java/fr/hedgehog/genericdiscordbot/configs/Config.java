@@ -1,9 +1,10 @@
 package fr.hedgehog.genericdiscordbot.configs;
 
-import fr.hedgehog.genericdiscordbot.commands.gameModule.configs.GameCache;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
+import javax.annotation.PostConstruct;
 import java.lang.reflect.InvocationTargetException;
 
 @Configuration
@@ -14,8 +15,8 @@ public class Config {
         return new CommandCache();
     }
 
-    @Bean
-    public GameCache getGames() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        return new GameCache();
-    }
+//    @Bean
+//    public GameCache getGames() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+//        return new GameCache();
+//    }
 }

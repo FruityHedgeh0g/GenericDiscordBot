@@ -1,10 +1,10 @@
-package fr.hedgehog.genericdiscordbot.commands.gameModule.games;
+package fr.hedgehog.genericdiscordbot.commands.gamemodule.games;
 
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
 import fr.hedgehog.genericdiscordbot.commands.GenericCommand;
-import fr.hedgehog.genericdiscordbot.commands.gameModule.GenericGameCommand;
+import fr.hedgehog.genericdiscordbot.commands.gamemodule.GenericGameCommand;
 import reactor.core.publisher.Mono;
 
 public class FirstClassTrouble implements GenericGameCommand, GenericCommand {

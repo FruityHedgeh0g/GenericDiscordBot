@@ -9,8 +9,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Component
-//@ConfigurationProperties(prefix = "dispatcher")
 @Getter
 @Setter
 public class CommandCache {
