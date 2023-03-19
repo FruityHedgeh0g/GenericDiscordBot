@@ -9,6 +9,6 @@ public interface GenericCommand {
 
     public String getCommandCaller();
 
-    public <T> Mono<T> execute(Message message);
+    public void execute(Message message);
 
 }

@@ -16,11 +16,11 @@ public class HelloWorld implements GenericCommand {
     }
 
     @Override
-    public Mono<Void> execute(Message message) {
-        return Mono.just(message)
+    public void execute(Message message) {
+        Mono.just(message)
                 .flatMap(Message::getChannel)
-                .flatMap(messageChannel -> messageChannel.createMessage("hi"))
-                .then();
+                .flatMap(channel -> channel.createMessage("hi"))
+                .subscribe();
     }
 
     private Mono<Void> printToChannel(MessageChannel channel){
