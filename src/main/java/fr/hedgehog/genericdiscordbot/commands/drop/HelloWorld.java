@@ -19,8 +19,7 @@ public class HelloWorld implements GenericCommand {
     public Mono<Void> execute(Message message) {
         return Mono.just(message)
                 .flatMap(Message::getChannel)
-                .flatMap(this::printToChannel)
-//                .flatMap(channel -> channel.createMessage("Hi!"))
+                .flatMap(messageChannel -> messageChannel.createMessage("hi"))
                 .then();
     }
 
