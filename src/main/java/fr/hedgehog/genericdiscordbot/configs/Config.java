@@ -1,6 +1,5 @@
 package fr.hedgehog.genericdiscordbot.configs;
 
-import fr.hedgehog.genericdiscordbot.commands.helpers.Helper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
