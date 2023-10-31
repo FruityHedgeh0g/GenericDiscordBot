@@ -21,11 +21,11 @@ public class Dispatcher {
         return Mono.just(message)
                 .map(anyMessage -> anyMessage.getContent().trim().split(" "))
                 .map(command -> commandCache.getCommands().get(command[1]))
-                .mapNotNull(clazz -> {
+                .handle((clazz, sink) -> {
                     try {
-                        return execute(clazz, message);
+                        execute(clazz, message);
                     } catch (Exception e) {
-                        throw new RuntimeException(e);
+                        sink.error(new RuntimeException(e));
                     }
                 })
                 .then();

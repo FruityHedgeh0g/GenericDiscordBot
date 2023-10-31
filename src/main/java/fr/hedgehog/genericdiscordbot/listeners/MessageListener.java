@@ -35,7 +35,7 @@ public class MessageListener{
 
     Predicate<Message> isABot = message -> message.getAuthor().map(user -> !user.isBot()).orElse(false);
     Predicate<Message> isACall = message -> message.getContent().trim().startsWith(prefix + caller);
-    Predicate<Message> hasACommand = message -> !message.getContent().trim().split(prefix + caller + " ")[1].trim().isEmpty();
+    Predicate<Message> hasACommand = message -> message.getContent().trim().split(prefix + caller + " ").length > 1;
     Predicate<Message> isInCommands = message -> dispatcher.getCommandCache().getCommands().containsKey(message.getContent().trim()
             .split(prefix + caller + " ")[1].trim()
             .split(" ")[0].trim());
